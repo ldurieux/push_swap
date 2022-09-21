@@ -2,7 +2,6 @@ NAME		=
 
 SRCS 		= \
 			  srcs/ft_stacks/delete.c \
-			  srcs/ft_stacks/execute.c \
 			  srcs/ft_stacks/is_sorted.c \
 			  srcs/ft_stacks/new.c \
 			  srcs/ft_stacks/print.c \
@@ -22,11 +21,16 @@ CHECKERSRCS	= \
 			  srcs/checker/ft_get_next_line.c \
 			  srcs/checker/ft_get_options.c \
 			  srcs/checker/ft_str_to_instruction.c \
+			  srcs/ft_stacks/checker_execute.c \
 
 PUSHSWAPSRCS	= \
 			  push_swap_main.c \
 			  srcs/push_swap/push_swap.c \
 			  srcs/push_swap/ft_get_dest_idx.c \
+			  srcs/push_swap/ft_is_sorted.c \
+			  srcs/ft_stacks/push_swap_execute.c \
+			  srcs/push_swap/ft_sort_3.c \
+			  srcs/push_swap/ft_insert_next.c \
 
 ASMSRCS		= \
 

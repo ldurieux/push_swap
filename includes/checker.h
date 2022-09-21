@@ -41,4 +41,9 @@ t_checker_flags	ft_get_options(int *argc, char ***argv);
  * if no instruction was found return Ins_Invalid */
 t_instruction	ft_str_to_instruction(const char *str);
 
+void			ft_stacks_execute(t_stacks *this, const t_instruction *ins,
+							size_t ins_count, t_checker_flags flags);
+void			ft_stacks_execute_one(t_stacks *this, t_instruction ins,
+								t_checker_flags flags);
+
 #endif // CHECKER_H

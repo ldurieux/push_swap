@@ -10,8 +10,8 @@ typedef enum e_instruction
 	Ins_Swap_A,
 	Ins_Swap_B,
 	Ins_Swap_Both,
-	Ins_Pop_A,
-	Ins_Pop_B,
+	Ins_Push_A,
+	Ins_Push_B,
 	Ins_Rotate_A,
 	Ins_Rotate_B,
 	Ins_Rotate_Both,
@@ -30,6 +30,7 @@ int		*ft_parse_numbers(char **numbers, size_t len);
  * if a malloc error occured return null */
 int		*ft_sort_merge(int *data, size_t len);
 
+/* put the string representation of ins to fd */
 void	ft_put_instruction_fd(t_instruction ins, int fd);
 
 #endif // COMMON_H

@@ -8,9 +8,9 @@ void	ft_put_instruction_fd(t_instruction ins, int fd)
 		ft_putstr_fd("sb", fd);
 	else if (ins == Ins_Swap_Both)
 		ft_putstr_fd("ss", fd);
-	else if (ins == Ins_Pop_A)
+	else if (ins == Ins_Push_A)
 		ft_putstr_fd("pa", fd);
-	else if (ins == Ins_Pop_B)
+	else if (ins == Ins_Push_B)
 		ft_putstr_fd("pb", fd);
 	else if (ins == Ins_Rotate_A)
 		ft_putstr_fd("ra", fd);

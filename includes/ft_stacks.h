@@ -21,11 +21,6 @@ typedef struct s_stacks
 t_stacks	*ft_stacks_new(int *data, size_t size);
 void		ft_stacks_delete(t_stacks *this);
 
-void		ft_stacks_execute(t_stacks *this, const t_instruction *ins,
-							size_t ins_count, t_checker_flags flags);
-void		ft_stacks_execute_one(t_stacks *this, t_instruction ins,
-								t_checker_flags flags);
-
 t_bool		ft_stacks_is_sorted(t_stacks *this);
 void		ft_stacks_print(t_stacks *this, t_checker_flags flags);
 
