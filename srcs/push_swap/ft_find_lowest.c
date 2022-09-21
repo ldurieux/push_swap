@@ -38,3 +38,30 @@ int	ft_find_lowest(t_ftfrwlist *stack)
 	}
 	return (min_idx);
 }
+
+int	ft_find_biggest(t_ftfrwlist *stack)
+{
+	t_ftfrwlist_node	*node;
+	int					max_val;
+	int					max_idx;
+	int					idx;
+	int					value;
+
+	node = stack->first;
+	max_val = *(int *)node->value;
+	max_idx = 0;
+	idx = 1;
+	node = node->next;
+	while (node)
+	{
+		value = *(int *)node->value;
+		if (value > max_val)
+		{
+			max_val = value;
+			max_idx = idx;
+		}
+		node = node->next;
+		idx++;
+	}
+	return (max_idx);
+}

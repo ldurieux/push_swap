@@ -41,6 +41,7 @@ void	ft_rotate_by(t_stacks *stacks, int which, int count);
 void	ft_rotate_sort(t_stacks *stacks);
 
 int		ft_find_lowest(t_ftfrwlist *stack);
+int		ft_find_biggest(t_ftfrwlist *stack);
 
 void	ft_stacks_execute(t_stacks *this, t_instruction ins);
 void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,

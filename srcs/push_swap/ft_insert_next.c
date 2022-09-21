@@ -12,16 +12,30 @@
 
 #include "push_swap.h"
 
+static int	find_dest_res(t_bool lowest, t_bool highest, t_ftfrwlist *stack,
+						int value)
+{
+	if (lowest)
+		return (ft_find_lowest(stack));
+	if (highest)
+		return (ft_find_biggest(stack) + 1);
+	if (value < *(int *)stack->last->value)
+		return ((int)stack->size - 1);
+	return (0);
+}
+
 static int	find_dest(t_ftfrwlist *stack, int value)
 {
 	int					idx;
 	int					node_val;
 	t_ftfrwlist_node	*node;
 	t_bool				lowest;
+	t_bool				highest;
 
 	node = stack->first;
 	idx = 0;
 	lowest = 1;
+	highest = 1;
 	while (node->next)
 	{
 		node_val = *(int *)node->value;
@@ -29,14 +43,12 @@ static int	find_dest(t_ftfrwlist *stack, int value)
 			return (idx + 1);
 		if (value > node_val || value > *(int *)node->next->value)
 			lowest = 0;
+		if (value < node_val || value < *(int *)node->next->value)
+			highest = 0;
 		node = node->next;
 		idx++;
 	}
-	if (lowest)
-		return (ft_find_lowest(stack));
-	if (value < *(int *)node->value)
-		return (idx);
-	return (0);
+	return (find_dest_res(lowest, highest, stack, value));
 }
 
 static void	get_insert_cost(t_push_swap_data *data)
