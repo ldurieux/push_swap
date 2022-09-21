@@ -32,6 +32,7 @@ typedef struct s_push_swap_data
 int		push_swap(int *numbers, int count);
 
 t_bool	ft_is_sorted(const int *numbers, int count);
+t_bool	ft_is_roughly_sorted(t_stacks *stacks);
 t_pair	*ft_get_dest_idx(int *numbers, int count);
 
 void	ft_sort_3(t_stacks *stacks);

@@ -41,16 +41,18 @@ int	push_swap(int *numbers, int count)
 		return (0);
 	if (!data_new(&data, numbers, count))
 		return (push_swap_criterr(&data, 3));
-	ft_stacks_execute_multiple(data.stacks, Ins_Push_B, count - 3);
-	if (data.stacks->a->size == 2)
-		ft_stacks_execute(data.stacks, Ins_Swap_A);
-	else
+	if (!ft_is_roughly_sorted(data.stacks))
 	{
+		ft_stacks_execute_multiple(data.stacks, Ins_Push_B, count - 3);
+		if (data.stacks->a->size == 2)
+			ft_stacks_execute(data.stacks, Ins_Swap_A);
 		ft_sort_3(data.stacks);
 		while (data.stacks->b->size)
 			ft_insert_next(&data);
 		ft_rotate_sort(data.stacks);
 	}
+	else
+		ft_rotate_sort(data.stacks);
 	data_delete(&data);
 	return (0);
 }

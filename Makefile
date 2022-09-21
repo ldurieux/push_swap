@@ -34,6 +34,7 @@ PUSHSWAPSRCS	= \
 			  srcs/push_swap/ft_rotate_by.c \
 			  srcs/push_swap/ft_find_lowest.c \
 			  srcs/push_swap/ft_rotate_sort.c \
+			  srcs/push_swap/ft_is_roughly_sorted.c \
 
 ASMSRCS		= \
 

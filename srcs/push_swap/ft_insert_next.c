@@ -39,7 +39,7 @@ static int	find_dest(t_ftfrwlist *stack, int value)
 	return (0);
 }
 
-static t_bool	get_insert_cost(t_push_swap_data *data)
+static void	get_insert_cost(t_push_swap_data *data)
 {
 	int					idx;
 	int					value;
@@ -54,7 +54,6 @@ static t_bool	get_insert_cost(t_push_swap_data *data)
 		node = node->next;
 		idx++;
 	}
-	return (1);
 }
 
 static int	lowest_cost(const int *costs, int len)
@@ -77,14 +76,12 @@ static int	lowest_cost(const int *costs, int len)
 	return (min_idx);
 }
 
-//TODO: handle error
 void	ft_insert_next(t_push_swap_data *data)
 {
 	int	min_idx;
 	int	dest_idx;
 
-	if (!get_insert_cost(data))
-		return ;
+	get_insert_cost(data);
 	min_idx = lowest_cost(data->buf, (int)data->stacks->b->size);
 	dest_idx = find_dest(data->stacks->a,
 			*(int *)ft_frwlist_value_at(data->stacks->b, min_idx));
