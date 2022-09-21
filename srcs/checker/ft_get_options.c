@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_options.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:41:07 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:41:09 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 #define DEBUG		0x01
@@ -19,7 +31,7 @@ static t_uint8	get_full_option(char *str)
 	return (INVALID);
 }
 
-static t_uint8 get_option(char chr)
+static t_uint8	get_option(char chr)
 {
 	if (chr == 'd')
 		return (DEBUG);

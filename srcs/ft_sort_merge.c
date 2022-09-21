@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_merge.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:43:08 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:43:09 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "common.h"
 
 typedef struct s_subarrays
@@ -6,8 +18,8 @@ typedef struct s_subarrays
 	size_t	len_right;
 	size_t	idx_left;
 	size_t	idx_right;
-	int	*left;
-	int	*right;
+	int		*left;
+	int		*right;
 }	t_subarrays;
 
 static void	ft_merge_inside(int *data, t_subarrays *d)
@@ -32,7 +44,7 @@ static void	ft_merge_inside(int *data, t_subarrays *d)
 	}
 	ft_memcpy(data, left + idx_left, sizeof(int) * (d->len_left - idx_left));
 	ft_memcpy(data + d->len_left - idx_left, right + idx_right,
-			  sizeof(int) * (d->len_right - idx_right));
+		sizeof(int) * (d->len_right - idx_right));
 }
 
 static t_bool	ft_merge(int *data, size_t mid, size_t end)

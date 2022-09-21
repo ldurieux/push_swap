@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_interactive.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:41:02 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:41:03 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 static int	error(int *numbers, t_stacks *stacks, t_instruction *ins, int err)
@@ -9,7 +21,7 @@ static int	error(int *numbers, t_stacks *stacks, t_instruction *ins, int err)
 	return (err);
 }
 
-int checker_interactive(t_checker_flags flags, t_stacks *stacks, int *numbers)
+int	checker_interactive(t_checker_flags flags, t_stacks *stacks, int *numbers)
 {
 	t_instruction	ins;
 	int				res;

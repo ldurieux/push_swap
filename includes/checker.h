@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:47:29 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:47:30 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CHECKER_H
 # define CHECKER_H
 
@@ -20,18 +32,18 @@ typedef union u_checker_flags
 		t_uint8	debug : 1;
 		t_uint8	color : 1;
 		t_uint8	interactive : 1;
-		t_uint8 help : 1;
-		t_uint8 invalid : 1;
+		t_uint8	help : 1;
+		t_uint8	invalid : 1;
 	};
 }	t_checker_flags;
 
 int				checker(t_checker_flags flags, t_stacks *stacks,
-						int *numbers);
+					int *numbers);
 int				checker_interactive(t_checker_flags flags,
-									t_stacks *stacks, int *numbers);
+					t_stacks *stacks, int *numbers);
 
 t_bool			ft_get_instructions(int fd, t_instruction **buf,
-									size_t *buf_size);
+					size_t *buf_size);
 int				ft_get_one_instruction(int fd, t_instruction *ins);
 size_t			ft_get_next_line(int fd, char **buf, size_t *buf_size);
 
@@ -42,8 +54,8 @@ t_checker_flags	ft_get_options(int *argc, char ***argv);
 t_instruction	ft_str_to_instruction(const char *str);
 
 void			ft_stacks_execute(t_stacks *this, const t_instruction *ins,
-							size_t ins_count, t_checker_flags flags);
+					size_t ins_count, t_checker_flags flags);
 void			ft_stacks_execute_one(t_stacks *this, t_instruction ins,
-								t_checker_flags flags);
+					t_checker_flags flags);
 
 #endif // CHECKER_H

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_stacks.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:47:32 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:47:33 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_STACKS_H
 # define FT_STACKS_H
 
@@ -5,11 +17,11 @@
 # include "ft_frwlist.h"
 # include "common.h"
 
-struct s_stacks;
-union u_checker_flags;
+struct							s_stacks;
+union							u_checker_flags;
 
-typedef void (*t_stacks_func)(struct s_stacks *);
-typedef union u_checker_flags t_checker_flags;
+typedef void					(*t_stacks_func)(struct s_stacks *);
+typedef union u_checker_flags	t_checker_flags;
 
 typedef struct s_stacks
 {

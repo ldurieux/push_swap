@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_instructions.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:41:04 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:41:05 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 #define START_SIZE	16
@@ -83,7 +95,7 @@ t_bool	ft_get_instructions(int fd, t_instruction **buf, size_t *buf_size)
 		return (get_instructions_criterr(NULL, line, buf, buf_size));
 	while (1)
 	{
-		if (ft_get_next_line(fd, &line, &line_size) == (size_t)-1)
+		if (ft_get_next_line(fd, &line, &line_size) == (size_t) - 1)
 			return (get_instructions_criterr(vec, line, buf, buf_size));
 		if (line_size == 0)
 			break ;

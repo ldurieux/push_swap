@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_dest_idx.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:42:39 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:42:40 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 //NOLINTNEXTLINE(misc-no-recursion)
 static int	binary_search(int *array, int value, int start, int end)
 {
 	int	item;
-	int mid;
+	int	mid;
 
 	if (start >= end)
 		return (start);

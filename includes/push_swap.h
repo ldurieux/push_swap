@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:47:34 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:47:35 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -31,6 +43,6 @@ int		ft_find_lowest(t_ftfrwlist *stack);
 
 void	ft_stacks_execute(t_stacks *this, t_instruction ins);
 void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,
-								int count);
+			int count);
 
 #endif // PUSH_SWAP_H

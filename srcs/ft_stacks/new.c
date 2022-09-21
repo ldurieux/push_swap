@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   new.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:42:10 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:42:12 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_stacks.h"
 
-static t_stacks_func	*make_funcs()
+static t_stacks_func	*make_funcs(void)
 {
 	t_stacks_func	*res;
 	int				idx;

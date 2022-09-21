@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_main.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 23:50:32 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/21 23:50:34 by ldurieux         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "common.h"
 #include "checker.h"
 #include "ft_stacks.h"
 
-static int	help()
+static int	help(void)
 {
 	char	*output;
 
 	output = "Usage: checker [OPTION]... [NUMBER]...\n"
-			 "Check if a set of instructions will sort the numbers.\n\n"
-			 "  -d, --debug         print the array after every "
-			 "instructions.\n"
-			 "  -c, --color         color the output.\n"
-			 "  -i, --interactive   execute the instruction after each"
-			 "new line.\n"
-			 "  -h, --help          display this help and exit.";
+		"Check if a set of instructions will sort the numbers.\n\n"
+		"  -d, --debug         print the array after every "
+		"instructions.\n"
+		"  -c, --color         color the output.\n"
+		"  -i, --interactive   execute the instruction after each"
+		"new line.\n"
+		"  -h, --help          display this help and exit.";
 	ft_putendl_fd(output, STDOUT);
 	return (0);
 }
@@ -51,7 +63,7 @@ static int	main_end(t_stacks *stacks, int *numbers, int res,
 	return (res);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int				*numbers;
 	t_stacks		*stacks;
