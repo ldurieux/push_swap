@@ -19,8 +19,6 @@ t_bool	ft_is_roughly_sorted(t_stacks *stacks)
 	t_ftfrwlist_node	*node;
 
 	lowest = ft_find_lowest(stacks->a);
-	if (lowest == 0)
-		return (ft_stacks_is_sorted(stacks));
 	idx = 0;
 	node = stacks->a->first;
 	while (node->next)
@@ -36,5 +34,7 @@ t_bool	ft_is_roughly_sorted(t_stacks *stacks)
 		node = node->next;
 		idx++;
 	}
+	if (lowest == 0)
+		return (1);
 	return (*(int *)node->value < *(int *)stacks->a->first->value);
 }

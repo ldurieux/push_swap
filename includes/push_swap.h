@@ -36,8 +36,6 @@ t_bool	ft_is_sorted(const int *numbers, int count);
  * rotation does not matter */
 t_bool	ft_is_roughly_sorted(t_stacks *stacks);
 
-/* sort when stack a contains only 3 values */
-void	ft_sort_3(t_stacks *stacks);
 /* insert one value from stack b to
  * stack a in the correct position */
 void	ft_insert_next(t_push_swap_data *data);

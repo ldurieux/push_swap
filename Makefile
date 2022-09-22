@@ -26,10 +26,8 @@ CHECKERSRCS	= \
 PUSHSWAPSRCS	= \
 			  push_swap_main.c \
 			  srcs/push_swap/push_swap.c \
-			  srcs/push_swap/ft_get_dest_idx.c \
 			  srcs/push_swap/ft_is_sorted.c \
 			  srcs/ft_stacks/push_swap_execute.c \
-			  srcs/push_swap/ft_sort_3.c \
 			  srcs/push_swap/ft_insert_next.c \
 			  srcs/push_swap/ft_rotate_by.c \
 			  srcs/push_swap/ft_find_lowest.c \
