@@ -44,8 +44,8 @@ int	push_swap(int *numbers, int count)
 	if (!ft_is_roughly_sorted(data.stacks))
 	{
 		ft_stacks_execute_multiple(data.stacks, Ins_Push_B, count - 3);
-		if (data.stacks->a->size == 2 ||
-			!ft_is_roughly_sorted(data.stacks))
+		if (data.stacks->a->size == 2
+			|| !ft_is_roughly_sorted(data.stacks))
 			ft_stacks_execute(data.stacks, Ins_Swap_A);
 		while (data.stacks->b->size)
 			ft_insert_next(&data);
