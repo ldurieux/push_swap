@@ -39,6 +39,9 @@ t_bool	ft_is_roughly_sorted(t_stacks *stacks);
 /* insert one value from stack b to
  * stack a in the correct position */
 void	ft_insert_next(t_push_swap_data *data);
+
+/* use rr or rrr if rot_a or rot_b have a common part */
+void	ft_rotate_common(t_stacks *stacks, int *rot_a, int *rot_b);
 /* rotate stack which by count
  * which 0 is stack a
  * other values are stack b

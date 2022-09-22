@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+void	ft_rotate_common(t_stacks *stacks, int *rot_a, int *rot_b)
+{
+	int	mid_a;
+	int	mid_b;
+	int	min;
+
+	mid_a = (int)stacks->a->size / 2;
+	mid_b = (int)stacks->b->size / 2;
+	min = (int)ft_min(*rot_a, *rot_b);
+	if (*rot_a <= mid_a && (*rot_b <= mid_b || *rot_a == *rot_b))
+	{
+		ft_stacks_execute_multiple(stacks, Ins_Rotate_Both, min);
+		*rot_a -= min;
+		*rot_b -= min;
+	}
+}
+
 void	ft_rotate_by(t_stacks *stacks, int which, int count)
 {
 	t_ftfrwlist		*stack;

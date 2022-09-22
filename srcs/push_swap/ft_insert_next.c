@@ -97,6 +97,7 @@ void	ft_insert_next(t_push_swap_data *data)
 	min_idx = lowest_cost(data->buf, (int)data->stacks->b->size);
 	dest_idx = find_dest(data->stacks->a,
 			*(int *)ft_frwlist_value_at(data->stacks->b, min_idx));
+	ft_rotate_common(data->stacks, &dest_idx, &min_idx);
 	ft_rotate_by(data->stacks, 0, dest_idx);
 	ft_rotate_by(data->stacks, 1, min_idx);
 	ft_stacks_execute(data->stacks, Ins_Push_A);
