@@ -84,6 +84,8 @@ t_checker_flags	ft_get_options(int *argc, char ***argv)
 		if (res.invalid || res.help)
 			return (res);
 	}
+	if (res.interactive)
+		res.debug = 1;
 	*argc -= idx;
 	*argv += idx;
 	return (res);

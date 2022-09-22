@@ -24,7 +24,7 @@ static int	help(void)
 		"instructions.\n"
 		"  -c, --color         color the output.\n"
 		"  -i, --interactive   execute the instruction after each"
-		"new line.\n"
+		" new line.\n"
 		"  -h, --help          display this help and exit.";
 	ft_putendl_fd(output, STDOUT);
 	return (0);
