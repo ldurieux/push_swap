@@ -47,7 +47,7 @@ static void	ft_merge_inside(int *data, t_subarrays *d)
 		sizeof(int) * (d->len_right - idx_right));
 }
 
-static t_bool	ft_merge(int *data, size_t mid, size_t end)
+static int	ft_merge(int *data, size_t mid, size_t end)
 {
 	t_subarrays	d;
 
@@ -63,7 +63,7 @@ static t_bool	ft_merge(int *data, size_t mid, size_t end)
 }
 
 //NOLINTNEXTLINE (misc-no-recursion)
-static t_bool	ft_sort_merge_recursive(int *data, size_t start, size_t end)
+static int	ft_sort_merge_recursive(int *data, size_t start, size_t end)
 {
 	size_t	mid;
 

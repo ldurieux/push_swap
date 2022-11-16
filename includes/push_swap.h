@@ -31,10 +31,10 @@ typedef struct s_push_swap_data
 
 int		push_swap(int *numbers, int count);
 
-t_bool	ft_is_sorted(const int *numbers, int count);
+int	ft_is_sorted(const int *numbers, int count);
 /* return true if stack a is sorted but the
  * rotation does not matter */
-t_bool	ft_is_roughly_sorted(t_stacks *stacks);
+int	ft_is_roughly_sorted(t_stacks *stacks);
 
 /* insert one value from stack b to
  * stack a in the correct position */
@@ -57,7 +57,7 @@ int		ft_find_lowest(t_ftfrwlist *stack);
 int		ft_find_biggest(t_ftfrwlist *stack);
 
 /* in adition to executing the instruction,
- * these functions print it to STDOUT */
+ * these functions print it to STDOUT_FILENO */
 void	ft_stacks_execute(t_stacks *this, t_instruction ins);
 void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,
 			int count);

@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_roughly_sorted.c                             :+:      :+:    :+:   */
+/*   ft_frwlist_at.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 00:38:18 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/22 00:38:20 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/07 14:56:28 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/07 14:56:35 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_frwlist.h"
 
-int	ft_is_roughly_sorted(t_stacks *stacks)
+t_ftfrwlist_node	*ft_frwlist_node_at(t_ftfrwlist *this, size_t index)
 {
-	int					lowest;
-	int					idx;
 	t_ftfrwlist_node	*node;
 
-	lowest = ft_find_lowest(stacks->a);
-	idx = 0;
-	node = stacks->a->first;
-	while (node->next)
-	{
-		if (idx == lowest - 1)
-		{
-			node = node->next;
-			idx++;
-			continue ;
-		}
-		if (*(int *)node->value > *(int *)node->next->value)
-			return (0);
+	if (!this)
+		return (NULL);
+	if (index == this->size - 1)
+		return (this->last);
+	node = this->first;
+	while (node && index--)
 		node = node->next;
-		idx++;
-	}
-	if (lowest == 0)
-		return (1);
-	return (*(int *)node->value < *(int *)stacks->a->first->value);
+	return (node);
+}
+
+void	*ft_frwlist_value_at(t_ftfrwlist *this, size_t index)
+{
+	t_ftfrwlist_node	*node;
+
+	node = ft_frwlist_node_at(this, index);
+	if (!node)
+		return (NULL);
+	return (node->value);
 }

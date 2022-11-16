@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	find_dest_res(t_bool lowest, t_bool highest, t_ftfrwlist *stack,
+static int	find_dest_res(int lowest, int highest, t_ftfrwlist *stack,
 						int value)
 {
 	if (lowest)
@@ -29,8 +29,8 @@ static int	find_dest(t_ftfrwlist *stack, int value)
 	int					idx;
 	int					node_val;
 	t_ftfrwlist_node	*node;
-	t_bool				lowest;
-	t_bool				highest;
+	int				lowest;
+	int				highest;
 
 	node = stack->first;
 	idx = 0;

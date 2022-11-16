@@ -14,7 +14,7 @@
 
 #define START_SIZE	16
 
-static t_bool	prepare_data(t_ftvector **vec, t_instruction *buf,
+static int	prepare_data(t_ftvector **vec, t_instruction *buf,
 							size_t buf_size)
 {
 	if (!buf || buf_size == 0)
@@ -36,7 +36,7 @@ static t_bool	prepare_data(t_ftvector **vec, t_instruction *buf,
 	return (1);
 }
 
-static t_bool	get_instructions_criterr(t_ftvector *vec, char *line,
+static int	get_instructions_criterr(t_ftvector *vec, char *line,
 									t_instruction **buf, size_t *buf_size)
 {
 	if (vec)
@@ -49,7 +49,7 @@ static t_bool	get_instructions_criterr(t_ftvector *vec, char *line,
 	return (0);
 }
 
-static t_bool	get_instructions_end(t_ftvector *vec, char *line,
+static int	get_instructions_end(t_ftvector *vec, char *line,
 									t_instruction **buf, size_t *buf_size)
 {
 	*buf = vec->data;
@@ -81,7 +81,7 @@ int	ft_get_one_instruction(int fd, t_instruction *ins)
 	return (1);
 }
 
-t_bool	ft_get_instructions(int fd, t_instruction **buf, size_t *buf_size)
+int	ft_get_instructions(int fd, t_instruction **buf, size_t *buf_size)
 {
 	t_ftvector		*vec;
 	char			*line;

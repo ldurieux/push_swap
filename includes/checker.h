@@ -26,14 +26,14 @@
 
 typedef union u_checker_flags
 {
-	t_uint8	all;
+	uint8_t	all;
 	struct
 	{
-		t_uint8	debug : 1;
-		t_uint8	color : 1;
-		t_uint8	interactive : 1;
-		t_uint8	help : 1;
-		t_uint8	invalid : 1;
+		uint8_t	debug : 1;
+		uint8_t	color : 1;
+		uint8_t	interactive : 1;
+		uint8_t	help : 1;
+		uint8_t	invalid : 1;
 	};
 }	t_checker_flags;
 
@@ -42,7 +42,7 @@ int				checker(t_checker_flags flags, t_stacks *stacks,
 int				checker_interactive(t_checker_flags flags,
 					t_stacks *stacks, int *numbers);
 
-t_bool			ft_get_instructions(int fd, t_instruction **buf,
+int			ft_get_instructions(int fd, t_instruction **buf,
 					size_t *buf_size);
 int				ft_get_one_instruction(int fd, t_instruction *ins);
 size_t			ft_get_next_line(int fd, char **buf, size_t *buf_size);

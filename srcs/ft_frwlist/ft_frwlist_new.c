@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_main.c                                   :+:      :+:    :+:   */
+/*   ft_frwlist_new.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 23:50:35 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/21 23:50:40 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/07 14:56:38 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/07 14:56:39 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "common.h"
-#include "ft_stacks.h"
+#include "ft_frwlist.h"
 
-static int	error(int *numbers, int err)
+t_ftfrwlist	*ft_frwlist_new(void)
 {
-	ft_putendl_fd("Error", STDOUT_FILENO);
-	free(numbers);
-	return (err);
-}
+	t_ftfrwlist	*res;
 
-int	main(int argc, char **argv)
-{
-	int	*numbers;
-	int	res;
-
-	if (argc <= 1)
-		return (1);
-	numbers = ft_parse_numbers(argv + 1, argc - 1);
-	if (!numbers)
-		return (error(numbers, 2));
-	res = push_swap(numbers, argc - 1);
-	free(numbers);
+	res = malloc(sizeof(t_ftfrwlist));
+	if (!res)
+		return (NULL);
+	res->size = 0;
+	res->first = NULL;
+	res->last = NULL;
 	return (res);
 }

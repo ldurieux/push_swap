@@ -12,7 +12,7 @@
 
 #include "common.h"
 
-static t_bool	parse_number(int *dest, char *number)
+static int	parse_number(int *dest, char *number)
 {
 	if (!dest || !number)
 		return (0);
@@ -26,13 +26,13 @@ static t_bool	parse_number(int *dest, char *number)
 	return (1);
 }
 
-static t_bool	check_dup_criterr(int *cpy)
+static int	check_dup_criterr(int *cpy)
 {
 	free(cpy);
 	return (0);
 }
 
-static t_bool	check_dup(int *values, size_t len)
+static int	check_dup(int *values, size_t len)
 {
 	int		*cpy;
 	size_t	idx;

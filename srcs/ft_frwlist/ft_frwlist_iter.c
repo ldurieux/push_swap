@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_roughly_sorted.c                             :+:      :+:    :+:   */
+/*   ft_frwlist_iter.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 00:38:18 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/22 00:38:20 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/07 20:29:11 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/07 20:29:12 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_frwlist.h"
 
-int	ft_is_roughly_sorted(t_stacks *stacks)
+void	ft_frwlist_iter(t_ftfrwlist *this, void (*f)(void *))
 {
-	int					lowest;
-	int					idx;
 	t_ftfrwlist_node	*node;
 
-	lowest = ft_find_lowest(stacks->a);
-	idx = 0;
-	node = stacks->a->first;
-	while (node->next)
+	if (!this)
+		return ;
+	node = this->first;
+	while (node)
 	{
-		if (idx == lowest - 1)
-		{
-			node = node->next;
-			idx++;
-			continue ;
-		}
-		if (*(int *)node->value > *(int *)node->next->value)
-			return (0);
+		f(node->value);
 		node = node->next;
-		idx++;
 	}
-	if (lowest == 0)
-		return (1);
-	return (*(int *)node->value < *(int *)stacks->a->first->value);
 }

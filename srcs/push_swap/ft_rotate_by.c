@@ -41,7 +41,7 @@ void	ft_rotate_by(t_stacks *stacks, int which, int count)
 		ins = Ins_Rotate_B;
 		stack = stacks->b;
 	}
-	if (count > stack->size / 2)
+	if ((size_t)count > stack->size / 2)
 	{
 		if (ins == Ins_Rotate_A)
 			ins = Ins_Reverse_Rotate_A;

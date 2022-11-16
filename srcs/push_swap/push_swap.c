@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static t_bool	data_new(t_push_swap_data *data, int *numbers, int count)
+static int	data_new(t_push_swap_data *data, int *numbers, int count)
 {
 	data->stacks = ft_stacks_new(numbers, count);
 	data->buf = malloc(sizeof(int) * count);

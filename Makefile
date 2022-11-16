@@ -1,5 +1,11 @@
 NAME		= 
 
+CHECKERNANE	= checker
+
+PUSHSWAPNANE	= push_swap
+
+CCDEFS		= \
+
 SRCS 		= \
 			  srcs/ft_stacks/delete.c \
 			  srcs/ft_stacks/is_sorted.c \
@@ -12,6 +18,17 @@ SRCS 		= \
 			  srcs/ft_parse_numbers.c \
 			  srcs/ft_sort_merge.c \
 			  srcs/ft_put_instruction_fd.c \
+			  srcs/ft_frwlist/ft_frwlist_at.c \
+			  srcs/ft_frwlist/ft_frwlist_insert.c \
+			  srcs/ft_frwlist/ft_frwlist_new.c \
+			  srcs/ft_frwlist/ft_frwlist_delete.c \
+			  srcs/ft_frwlist/ft_frwlist_iter.c \
+			  srcs/ft_frwlist/ft_frwlist_remove.c \
+			  srcs/ft_vector/ft_vector_delete.c \
+			  srcs/ft_vector/ft_vector_new.c \
+			  srcs/ft_vector/ft_vector_pop_back.c \
+			  srcs/ft_vector/ft_vector_push_back.c \
+			  srcs/ft_vector/ft_vector_reserve.c \
 			  
 CHECKERSRCS	= \
 			  checker_main.c \
@@ -36,66 +53,74 @@ PUSHSWAPSRCS	= \
 
 ASMSRCS		= \
 
-LIB_NAMES 	= \
+LIB_NAMES	= \
 			  libft \
-			  libftcont \
-			  
+
 HEADERS		= \
 			  includes \
 
 LIBS		= $(subst lib,-l,$(notdir $(LIB_NAMES)))
 LIB_LD		= $(foreach lib,$(LIB_NAMES),-L$(lib))
 LIB_PATHS	= $(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
-LIB_HEADERS	= $(foreach lib,$(LIB_NAMES),-I$(lib)/includes/)
+LIB_HEADERS	= $(foreach lib,$(LIB_NAMES),-I$(lib)/)
 
-CHECKEROBJS		= ${CHECKERSRCS:.c=.o}
-CHECKERDEPS		= ${CHECKERSRCS:.c=.d}
-PUSHSWAPDEPS	= ${PUSHSWAPSRCS:.c=.d}
-PUSHSWAPOBJS	= ${PUSHSWAPSRCS:.c=.o}
-OBJS			= ${SRCS:.c=.o} $(ASMSRCS:.s=.o)
-DEPS			= ${SRCS:.c=.d}
-CC				= gcc -no-pie
-CCWFLGS			= -Wall -Wextra
-CCDBGFLGS		= -fsanitize=address -g
-CCO1FLGS		= -O1 -march=native
-CCO2FLGS		= -O2 -march=native
-CCO3FLGS		= -O3 -march=native
-DEPSFLAGS		= -MMD -MP
-RM				= rm -f
-MAKE			= make -C
-AR				= ar
-ARFLAGS			= rc
-NASM			= nasm
-NASMFLAGS		= -felf64
+CCDEFSFLGS	= $(foreach def,$(CCDEFS),-D $(def))
 
-.PHONY: all clean fclean re
+BUILDDIR	= build
+OBJS		= $(SRCS:%.c=$(BUILDDIR)/%.o) $(ASMSRCS:%.s=$(BUILDDIR)/%.o)
+DEPS		= $(SRCS:%.c=$(BUILDDIR)/%.d)
+CHECKEROBJS		= ${CHECKERSRCS:%.c=$(BUILDDIR)/%.o}
+CHECKERDEPS		= ${CHECKERSRCS:%.c=$(BUILDDIR)/%.d}
+PUSHSWAPDEPS	= ${PUSHSWAPSRCS:%.c=$(BUILDDIR)/%.d}
+PUSHSWAPOBJS	= ${PUSHSWAPSRCS:%.c=$(BUILDDIR)/%.o}
+CC			= cc
+CCWFLGS		= -Wall -Wextra -Werror
+CCDBGFLGS	= -fsanitize=address -g
+CCO1FLGS	= -O1 -march=native
+CCO2FLGS	= -O2 -march=native
+CCO3FLGS	= -O3 -march=native
+DEPSFLAGS	= -MMD -MP
+RM			= rm -Rf
+MAKE		= make -C
+MKDIR		= mkdir
+AR			= ar
+ARFLAGS		= rcs
+NASM		= nasm
+NASMFLAGS	= -felf64
 
-all : checker push_swap
+all : $(CHECKERNANE) $(PUSHSWAPNANE)
 
-checker : $(LIB_PATHS) $(OBJS) $(CHECKEROBJS)
-		$(CC) $(CCWFLAGS) $(CCDBGFLGS) -I$(HEADERS) $(LIB_HEADERS) -o $@ $(CHECKEROBJS) $(OBJS) $(LIB_LD) $(LIBS)
+$(CHECKERNANE) : $(LIB_PATHS) $(OBJS) $(CHECKEROBJS)
+		$(CC) $(CCWFLGS) -o $(CHECKERNANE) $(OBJS) $(CHECKEROBJS) $(LIB_LD) $(LIBS)
+		
+$(PUSHSWAPNANE) : $(LIB_PATHS) $(OBJS) $(PUSHSWAPOBJS)
+		$(CC) $(CCWFLGS) -o $(PUSHSWAPNANE) $(OBJS) $(PUSHSWAPOBJS) $(LIB_LD) $(LIBS)
 
-push_swap : $(LIB_PATHS) $(OBJS) $(PUSHSWAPOBJS)
-		$(CC) $(CCWFLAGS) $(CCDBGFLGS) -I$(HEADERS) $(LIB_HEADERS) -o $@ $(PUSHSWAPOBJS) $(OBJS) $(LIB_LD) $(LIBS)
+bonus : $(CHECKERNANE) $(PUSHSWAPNANE)
 
 $(LIB_PATHS) :
 		$(MAKE) $(dir $@)
 
 clean :
-		-$(RM) $(OBJS) $(DEPS) $(CHECKEROBJS) $(CHECKERDEPS) $(PUSHSWAPOBJS) $(PUSHSWAPDEPS)
+		-$(RM) $(BUILDDIR)
 
 fclean : clean
 		$(foreach lib, $(LIB_NAMES), \
 			$(MAKE) $(lib) fclean; \
 		)
-		-$(RM) $(NAME) checker push_swap
+		-$(RM) $(CHECKERNANE) $(PUSHSWAPNANE)
 
 re : fclean all
 
-%.o : %.asm Makefile
-		$(NASM) $(NASMFLAGS) -o $@ $<
+$(BUILDDIR)/%.o : %.s Makefile
+		mkdir -p $(@D)
+		$(NASM) $(NASMFLAGS) -o $(BUILDDIR)/$@ $<
 
 -include $(DEPS)
 
-%.o : %.c Makefile
-		$(CC) $(CCWFLAGS) $(CCDBGFLGS) $(DEPSFLAGS) -I$(HEADERS) $(LIB_HEADERS) -c $< -o $@ $(LIB_LD) $(LIBS)
+$(BUILDDIR)/%.o : %.c Makefile
+		mkdir -p $(@D)
+		$(CC) $(CCWFLGS) $(DEPSFLAGS) $(CCDEFSFLGS) -I$(HEADERS) $(LIB_HEADERS) -c $< -o $@
+
+.PHONY: all clean fclean re bonus
+

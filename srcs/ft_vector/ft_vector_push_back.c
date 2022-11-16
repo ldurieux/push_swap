@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   ft_vector_push_back.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldurieux <ldurieux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 23:42:08 by ldurieux          #+#    #+#             */
-/*   Updated: 2022/09/21 23:42:09 by ldurieux         ###   ########lyon.fr   */
+/*   Created: 2022/09/06 19:10:37 by ldurieux          #+#    #+#             */
+/*   Updated: 2022/09/06 19:10:37 by ldurieux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stacks.h"
+#include "ft_vector.h"
 
-int	ft_stacks_is_sorted(t_stacks *this)
+int	ft_vector_push_back(t_ftvector *this, void *value)
 {
-	int					last;
-	int					value;
-	t_ftfrwlist_node	*node;
+	size_t	data_size;
 
-	if (this->b->size > 0)
+	if (!this || !value)
 		return (0);
-	node = this->a->first;
-	last = *(int *)node->value;
-	node = node->next;
-	while (node)
-	{
-		value = *(int *)node->value;
-		if (value < last)
+	if (this->size >= this->_capacity)
+		if (!ft_vector_reserve(this, this->_capacity * 2))
 			return (0);
-		last = value;
-		node = node->next;
-	}
+	data_size = this->_data_size;
+	ft_memcpy(
+		((char *)this->data) + this->size * data_size,
+		value, data_size);
+	this->size++;
 	return (1);
 }

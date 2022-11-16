@@ -18,8 +18,8 @@ void	ft_stacks_execute(t_stacks *this, t_instruction ins)
 	if (ins == Ins_Invalid)
 		return ;
 	this->funcs[ins](this);
-	ft_put_instruction_fd(ins, STDOUT);
-	ft_putendl_fd("", STDOUT);
+	ft_put_instruction_fd(ins, STDOUT_FILENO);
+	ft_putendl_fd("", STDOUT_FILENO);
 }
 
 void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,
@@ -33,7 +33,7 @@ void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,
 	while (++idx < count)
 	{
 		this->funcs[ins](this);
-		ft_put_instruction_fd(ins, STDOUT);
-		ft_putendl_fd("", STDOUT);
+		ft_put_instruction_fd(ins, STDOUT_FILENO);
+		ft_putendl_fd("", STDOUT_FILENO);
 	}
 }

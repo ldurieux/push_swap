@@ -14,7 +14,7 @@
 
 #define START_SIZE	64
 
-static t_bool	prepare_data(t_ftvector **vec, char *buf, size_t buf_size)
+static int	prepare_data(t_ftvector **vec, char *buf, size_t buf_size)
 {
 	if (!buf || buf_size == 0)
 	{

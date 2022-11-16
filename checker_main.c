@@ -26,13 +26,13 @@ static int	help(void)
 		"  -i, --interactive   execute the instruction after each"
 		" new line.\n"
 		"  -h, --help          display this help and exit.";
-	ft_putendl_fd(output, STDOUT);
+	ft_putendl_fd(output, STDOUT_FILENO);
 	return (0);
 }
 
 static int	error(int *numbers, t_stacks *stacks, t_instruction *ins, int err)
 {
-	ft_putendl_fd("Error", STDOUT);
+	ft_putendl_fd("Error", STDOUT_FILENO);
 	free(numbers);
 	ft_stacks_delete(stacks);
 	free(ins);
@@ -47,17 +47,17 @@ static int	main_end(t_stacks *stacks, int *numbers, int res,
 	if (ft_stacks_is_sorted(stacks))
 	{
 		if (flags.color)
-			ft_putstr_fd(GREEN, STDOUT);
-		ft_putendl_fd("OK", STDOUT);
+			ft_putstr_fd(GREEN, STDOUT_FILENO);
+		ft_putendl_fd("OK", STDOUT_FILENO);
 	}
 	else
 	{
 		if (flags.color)
-			ft_putstr_fd(RED, STDOUT);
-		ft_putendl_fd("KO", STDOUT);
+			ft_putstr_fd(RED, STDOUT_FILENO);
+		ft_putendl_fd("KO", STDOUT_FILENO);
 	}
 	if (flags.color)
-		ft_putstr_fd(RESET, STDOUT);
+		ft_putstr_fd(RESET, STDOUT_FILENO);
 	ft_stacks_delete(stacks);
 	free(numbers);
 	return (res);

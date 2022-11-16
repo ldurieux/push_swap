@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_bool	ft_is_sorted(const int *numbers, int count)
+int	ft_is_sorted(const int *numbers, int count)
 {
 	int	idx;
 

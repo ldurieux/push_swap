@@ -18,7 +18,7 @@
 #define HELP		0x08
 #define INVALID		0x10
 
-static t_uint8	get_full_option(char *str)
+static uint8_t	get_full_option(char *str)
 {
 	if (ft_strcmp(str, "--debug") == 0)
 		return (DEBUG);
@@ -31,7 +31,7 @@ static t_uint8	get_full_option(char *str)
 	return (INVALID);
 }
 
-static t_uint8	get_option(char chr)
+static uint8_t	get_option(char chr)
 {
 	if (chr == 'd')
 		return (DEBUG);
@@ -44,9 +44,9 @@ static t_uint8	get_option(char chr)
 	return (INVALID);
 }
 
-static t_uint8	get_options(char *str)
+static uint8_t	get_options(char *str)
 {
-	t_uint8	res;
+	uint8_t	res;
 	size_t	idx;
 
 	res = 0;

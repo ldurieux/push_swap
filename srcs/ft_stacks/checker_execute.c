@@ -21,9 +21,9 @@ void	ft_stacks_execute_one(t_stacks *this, t_instruction ins,
 	this->funcs[ins](this);
 	if (flags.debug)
 	{
-		ft_putstr_fd("=== ", STDOUT);
-		ft_put_instruction_fd(ins, STDOUT);
-		ft_putendl_fd(" ===", STDOUT);
+		ft_putstr_fd("=== ", STDOUT_FILENO);
+		ft_put_instruction_fd(ins, STDOUT_FILENO);
+		ft_putendl_fd(" ===", STDOUT_FILENO);
 		ft_stacks_print(this, flags);
 	}
 }
@@ -42,12 +42,12 @@ void	ft_stacks_execute(t_stacks *this, const t_instruction *ins,
 		if (flags.debug)
 		{
 			if (flags.color)
-				ft_putstr_fd(BOLD, STDOUT);
-			ft_putstr_fd("=== ", STDOUT);
-			ft_put_instruction_fd(ins[idx], STDOUT);
-			ft_putendl_fd(" ===", STDOUT);
+				ft_putstr_fd(BOLD, STDOUT_FILENO);
+			ft_putstr_fd("=== ", STDOUT_FILENO);
+			ft_put_instruction_fd(ins[idx], STDOUT_FILENO);
+			ft_putendl_fd(" ===", STDOUT_FILENO);
 			if (flags.color)
-				ft_putstr_fd(RESET, STDOUT);
+				ft_putstr_fd(RESET, STDOUT_FILENO);
 			ft_stacks_print(this, flags);
 		}
 	}
