@@ -29,8 +29,8 @@ static int	find_dest(t_ftfrwlist *stack, int value)
 	int					idx;
 	int					node_val;
 	t_ftfrwlist_node	*node;
-	int				lowest;
-	int				highest;
+	int					lowest;
+	int					highest;
 
 	node = stack->first;
 	idx = 0;

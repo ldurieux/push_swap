@@ -35,7 +35,7 @@ void		ft_stacks_delete(t_stacks *this);
 
 /* return true only if stack b is empty and
  * stack is sorted and in the correct rotation */
-int		ft_stacks_is_sorted(t_stacks *this);
+int			ft_stacks_is_sorted(t_stacks *this);
 void		ft_stacks_print(t_stacks *this, t_checker_flags flags);
 
 void		ft_stacks_sa(t_stacks *this);

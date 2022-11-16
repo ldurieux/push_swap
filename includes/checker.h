@@ -42,7 +42,7 @@ int				checker(t_checker_flags flags, t_stacks *stacks,
 int				checker_interactive(t_checker_flags flags,
 					t_stacks *stacks, int *numbers);
 
-int			ft_get_instructions(int fd, t_instruction **buf,
+int				ft_get_instructions(int fd, t_instruction **buf,
 					size_t *buf_size);
 int				ft_get_one_instruction(int fd, t_instruction *ins);
 size_t			ft_get_next_line(int fd, char **buf, size_t *buf_size);

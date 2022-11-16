@@ -31,10 +31,10 @@ typedef struct s_push_swap_data
 
 int		push_swap(int *numbers, int count);
 
-int	ft_is_sorted(const int *numbers, int count);
+int		ft_is_sorted(const int *numbers, int count);
 /* return true if stack a is sorted but the
  * rotation does not matter */
-int	ft_is_roughly_sorted(t_stacks *stacks);
+int		ft_is_roughly_sorted(t_stacks *stacks);
 
 /* insert one value from stack b to
  * stack a in the correct position */
