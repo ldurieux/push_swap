@@ -12,6 +12,9 @@
 
 #include "common.h"
 
+#define INT32_MAX_STR "2147483647"
+#define INT32_MIN_STR "-2147483648"
+
 static int	parse_number(int *dest, char *number)
 {
 	if (!dest || !number)
@@ -23,6 +26,9 @@ static int	parse_number(int *dest, char *number)
 	if (!ft_str_isdigit(number + 1))
 		return (0);
 	*dest = ft_strtoi(number, NULL);
+	if ((*dest == INT32_MAX && ft_strcmp(number, INT32_MAX_STR))
+		|| (*dest == INT32_MIN && ft_strcmp(number, INT32_MIN_STR)))
+		return (0);
 	return (1);
 }
 

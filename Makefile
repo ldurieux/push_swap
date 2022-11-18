@@ -18,17 +18,6 @@ SRCS 		= \
 			  srcs/ft_parse_numbers.c \
 			  srcs/ft_sort_merge.c \
 			  srcs/ft_put_instruction_fd.c \
-			  srcs/ft_frwlist/ft_frwlist_at.c \
-			  srcs/ft_frwlist/ft_frwlist_insert.c \
-			  srcs/ft_frwlist/ft_frwlist_new.c \
-			  srcs/ft_frwlist/ft_frwlist_delete.c \
-			  srcs/ft_frwlist/ft_frwlist_iter.c \
-			  srcs/ft_frwlist/ft_frwlist_remove.c \
-			  srcs/ft_vector/ft_vector_delete.c \
-			  srcs/ft_vector/ft_vector_new.c \
-			  srcs/ft_vector/ft_vector_pop_back.c \
-			  srcs/ft_vector/ft_vector_push_back.c \
-			  srcs/ft_vector/ft_vector_reserve.c \
 			  
 CHECKERSRCS	= \
 			  checker_main.c \
@@ -62,7 +51,7 @@ HEADERS		= \
 LIBS		= $(subst lib,-l,$(notdir $(LIB_NAMES)))
 LIB_LD		= $(foreach lib,$(LIB_NAMES),-L$(lib))
 LIB_PATHS	= $(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
-LIB_HEADERS	= $(foreach lib,$(LIB_NAMES),-I$(lib)/)
+LIB_HEADERS	= $(foreach lib,$(LIB_NAMES),-I$(lib)/includes/)
 
 CCDEFSFLGS	= $(foreach def,$(CCDEFS),-D $(def))
 
@@ -73,7 +62,7 @@ CHECKEROBJS		= ${CHECKERSRCS:%.c=$(BUILDDIR)/%.o}
 CHECKERDEPS		= ${CHECKERSRCS:%.c=$(BUILDDIR)/%.d}
 PUSHSWAPDEPS	= ${PUSHSWAPSRCS:%.c=$(BUILDDIR)/%.d}
 PUSHSWAPOBJS	= ${PUSHSWAPSRCS:%.c=$(BUILDDIR)/%.o}
-CC			= cc
+CC			= cc -fsanitize=address -g
 CCWFLGS		= -Wall -Wextra -Werror
 CCDBGFLGS	= -fsanitize=address -g
 CCO1FLGS	= -O1 -march=native

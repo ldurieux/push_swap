@@ -75,10 +75,10 @@ int	main(int argc, char **argv)
 	flags = ft_get_options(&argc, &argv);
 	if (flags.help || flags.invalid)
 		return (help());
-	numbers = ft_parse_numbers(argv, argc);
+	numbers = ft_parse_numbers(argv, (size_t)argc);
 	if (!numbers)
 		return (error(numbers, NULL, NULL, 2));
-	stacks = ft_stacks_new(numbers, argc);
+	stacks = ft_stacks_new(numbers, (size_t)argc);
 	if (!stacks)
 		return (error(numbers, stacks, NULL, 2));
 	if (flags.interactive)

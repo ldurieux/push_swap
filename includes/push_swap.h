@@ -17,12 +17,6 @@
 # include "common.h"
 # include "ft_stacks.h"
 
-typedef struct s_pair
-{
-	int	src_idx;
-	int	dst_idx;
-}	t_pair;
-
 typedef struct s_push_swap_data
 {
 	t_stacks	*stacks;
