@@ -12,7 +12,8 @@
 
 #include "common.h"
 
-static void	ft_merge_inside(int *data, int *left, size_t len_left, size_t len_right)
+static void	ft_merge_inside(int *data, int *left, size_t len_left,
+						size_t len_right)
 {
 	size_t	idx_left;
 	size_t	idx_right;
@@ -38,7 +39,8 @@ static void	ft_merge(int *data, size_t mid, size_t end, int *buf)
 }
 
 //NOLINTNEXTLINE (misc-no-recursion)
-static void	ft_sort_merge_recursive(int *data, size_t start, size_t end, int *buf)
+static void	ft_sort_merge_recursive(int *data, size_t start, size_t end,
+								int *buf)
 {
 	size_t	mid;
 
@@ -61,4 +63,3 @@ int	*ft_sort_merge(int *data, size_t len)
 	free(buf);
 	return (data);
 }
-
