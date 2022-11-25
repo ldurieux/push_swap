@@ -113,5 +113,5 @@ $(BUILDDIR)/%.o : %.c Makefile $(LIB_PATHS)
 		mkdir -p $(@D)
 		$(CC) $(CCWFLGS) $(DEPSFLAGS) $(CCDEFSFLGS) -I$(HEADERS) $(LIB_HEADERS) -c $< -o $@
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus libs
 
