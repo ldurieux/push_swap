@@ -36,7 +36,7 @@ typedef enum e_instruction
 /* parse every numbers in numbers and return them
  * if a malloc error occured return NULL
  * if a number is malformed return NULL */
-int		*ft_parse_numbers(char **numbers, size_t len);
+int		*ft_parse_numbers(char **argv, size_t *len);
 
 /* sort len values in data using the merge algorithm
  * if a malloc error occured return null */

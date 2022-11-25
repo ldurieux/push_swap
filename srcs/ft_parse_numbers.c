@@ -32,12 +32,6 @@ static int	parse_number(int *dest, char *number)
 	return (1);
 }
 
-static int	check_dup_criterr(int *cpy)
-{
-	free(cpy);
-	return (0);
-}
-
 static int	check_dup(int *values, size_t len)
 {
 	int		*cpy;
@@ -45,39 +39,62 @@ static int	check_dup(int *values, size_t len)
 
 	cpy = malloc(sizeof(int) * len);
 	if (!cpy)
-		return (check_dup_criterr(NULL));
+		return (0);
 	ft_memcpy(cpy, values, sizeof(int) * len);
 	if (!ft_sort_merge(cpy, len))
-		return (check_dup_criterr(cpy));
+		return (free(cpy), 0);
 	idx = 0;
 	while (++idx < len)
 		if (cpy[idx - 1] == cpy[idx])
-			return (check_dup_criterr(cpy));
+			return (free(cpy), 0);
 	free(cpy);
 	return (1);
 }
 
-static int	*parse_numbers_criterr(int *res)
+static void	free_strarr(char **arr)
+{
+	size_t	i;
+
+	if (!arr)
+		return ;
+	i = (size_t)-1;
+	while (arr[++i])
+		free(arr[i]);
+	free(arr);
+}
+
+static int	*parse_numbers_criterr(int *res, char **numbers, char **argv)
 {
 	free(res);
+	if (numbers != argv)
+		free_strarr(numbers);
 	return (NULL);
 }
 
-int	*ft_parse_numbers(char **numbers, size_t len)
+int	*ft_parse_numbers(char **argv, size_t *len)
 {
 	int		*res;
 	size_t	idx;
+	char	**numbers;
 
-	if (!numbers || len == 0)
-		return (parse_numbers_criterr(NULL));
-	res = malloc(sizeof(int) * len);
+	numbers = argv;
+	if (!argv[1])
+		numbers = ft_strsplit(argv[0], " \n\r\f\t\v");
+	if (!numbers)
+		return (parse_numbers_criterr(NULL, numbers, argv));
+	*len = (size_t)-1;
+	while (numbers[++(*len)])
+		;
+	res = malloc(sizeof(int) * *len);
 	if (!res)
-		return (parse_numbers_criterr(NULL));
+		return (parse_numbers_criterr(NULL, numbers, argv));
 	idx = (size_t)-1;
-	while (++idx < len)
+	while (++idx < *len)
 		if (!parse_number(res + idx, numbers[idx]))
-			return (parse_numbers_criterr(res));
-	if (!check_dup(res, len))
-		return (parse_numbers_criterr(res));
+			return (parse_numbers_criterr(res, numbers, argv));
+	if (!check_dup(res, *len))
+		return (parse_numbers_criterr(res, numbers, argv));
+	if (numbers != argv)
+		free_strarr(numbers);
 	return (res);
 }

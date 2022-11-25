@@ -69,16 +69,17 @@ int	main(int argc, char **argv)
 	t_stacks		*stacks;
 	t_checker_flags	flags;
 	int				res;
+	size_t			len;
 
 	if (argc <= 1)
 		return (1);
 	flags = ft_get_options(&argc, &argv);
 	if (flags.help || flags.invalid)
 		return (help());
-	numbers = ft_parse_numbers(argv, (size_t)argc);
+	numbers = ft_parse_numbers(argv, &len);
 	if (!numbers)
 		return (error(numbers, NULL, NULL, 2));
-	stacks = ft_stacks_new(numbers, (size_t)argc);
+	stacks = ft_stacks_new(numbers, len);
 	if (!stacks)
 		return (error(numbers, stacks, NULL, 2));
 	if (flags.interactive)

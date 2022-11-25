@@ -23,15 +23,16 @@ static int	error(int *numbers, int err)
 
 int	main(int argc, char **argv)
 {
-	int	*numbers;
-	int	res;
+	int		*numbers;
+	int		res;
+	size_t	len;
 
 	if (argc < 2)
 		return (error(NULL, 1));
-	numbers = ft_parse_numbers(argv + 1, (size_t)argc - 1);
+	numbers = ft_parse_numbers(argv + 1, &len);
 	if (!numbers)
 		return (error(numbers, 2));
-	res = push_swap(numbers, argc - 1);
+	res = push_swap(numbers, (int)len);
 	free(numbers);
 	return (res);
 }
