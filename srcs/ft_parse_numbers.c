@@ -81,10 +81,11 @@ int	*ft_parse_numbers(char **argv, size_t *len)
 	if (!argv[1])
 		numbers = ft_strsplit(argv[0], " \n\r\f\t\v");
 	if (!numbers)
-		return (parse_numbers_criterr(NULL, numbers, argv));
-	*len = (size_t)-1;
+		return (parse_numbers_criterr(NULL, NULL, NULL));
 	while (numbers[++(*len)])
 		;
+	if (*len == 0)
+		return (parse_numbers_criterr(NULL, numbers, argv));
 	res = malloc(sizeof(int) * *len);
 	if (!res)
 		return (parse_numbers_criterr(NULL, numbers, argv));

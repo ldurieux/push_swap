@@ -76,6 +76,7 @@ int	main(int argc, char **argv)
 	flags = ft_get_options(&argc, &argv);
 	if (flags.help || flags.invalid)
 		return (help());
+	len = (size_t)-1;
 	numbers = ft_parse_numbers(argv, &len);
 	if (!numbers)
 		return (error(numbers, NULL, NULL, 2));

@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (error(NULL, 1));
+	len = (size_t)-1;
 	numbers = ft_parse_numbers(argv + 1, &len);
 	if (!numbers)
 		return (error(numbers, 2));
