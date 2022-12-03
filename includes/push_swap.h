@@ -20,7 +20,7 @@
 typedef struct s_push_swap_data
 {
 	t_stacks	*stacks;
-	int			*buf;
+	int64_t		*buf;
 }	t_push_swap_data;
 
 int		push_swap(int *numbers, int count);
@@ -37,25 +37,25 @@ int		ft_is_roughly_sorted(t_stacks *stacks);
 void	ft_insert_next(t_push_swap_data *data);
 
 /* use rr or rrr if rot_a or rot_b have a common part */
-void	ft_rotate_common(t_stacks *stacks, int *rot_a, int *rot_b);
+void	ft_rotate_common(t_stacks *stacks, int64_t *rot_a, int64_t *rot_b);
 /* rotate stack which by count
  * which 0 is stack a
  * other values are stack b
  * this function can decide in which way it should
  * rotate, correct way or reverse*/
-void	ft_rotate_by(t_stacks *stacks, int which, int count);
+void	ft_rotate_by(t_stacks *stacks, int which, size_t count);
 /* rotate the stack a until it is in the correct rotation
  * this function expect the stack to at least
  * be sorted but in the wrong rotation */
 void	ft_rotate_sort(t_stacks *stacks);
 
-int		ft_find_lowest(t_ftfrwlist *stack);
-int		ft_find_biggest(t_ftfrwlist *stack);
+int64_t ft_find_lowest(t_ftfrwlist *stack);
+int64_t	ft_find_biggest(t_ftfrwlist *stack);
 
 /* in adition to executing the instruction,
  * these functions print it to STDOUT_FILENO */
 void	ft_stacks_execute(t_stacks *this, t_instruction ins);
 void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,
-			int count);
+			int64_t count);
 
 #endif // PUSH_SWAP_H

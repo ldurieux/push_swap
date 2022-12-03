@@ -17,17 +17,17 @@ static int	send_biggest_back(t_stacks *stacks, t_ftfrwlist_node *curr,
 							t_ftfrwlist_node **last,
 							t_ftfrwlist_node **before_last)
 {
-	if (((*(int *)curr->value) - (*(int *)(*last)->value)) > 0
-		&& ((*(int *)curr->value) - (*(int *)(*last)->value)) < 13)
+	if (((int64_t)curr->value - (int64_t)(*last)->value) > 0
+		&& ((int64_t)curr->value - (int64_t)(*last)->value) < 13)
 	{
 		ft_stacks_execute(stacks, Ins_Rotate_A);
-		before_last = last;
+		*before_last = *last;
 		*last = stacks->a->last;
 		return (1);
 	}
 	if (*before_last
-		&& ((*(int *)curr->value) - (*(int *)(*before_last)->value)) > 0
-		&& ((*(int *)curr->value) - (*(int *)(*before_last)->value)) < 13)
+		&& ((int64_t)curr->value - (int64_t)(*before_last)->value) > 0
+		&& ((int64_t)curr->value - (int64_t)(*before_last)->value) < 13)
 	{
 		ft_stacks_execute(stacks, Ins_Reverse_Rotate_A);
 		ft_stacks_execute(stacks, Ins_Swap_A);
@@ -48,7 +48,7 @@ void	prepare_stacks(t_stacks *stacks)
 	if (stacks->a->size <= 3)
 		return ;
 	last = stacks->a->last;
-	while ((*(int *)last->value) > (int)stacks->a->size / 2)
+	while ((int64_t)last->value > (int64_t)stacks->a->size / 2)
 	{
 		ft_stacks_execute(stacks, Ins_Reverse_Rotate_A);
 		last = stacks->a->last;

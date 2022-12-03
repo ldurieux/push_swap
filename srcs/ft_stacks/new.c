@@ -61,7 +61,7 @@ t_stacks	*ft_stacks_new(int *data, size_t size)
 	if (!res->a || !res->b || !res->funcs)
 		return (new_criterr(res));
 	while (size-- > 0)
-		if (!ft_frwlist_push_front(res->a, data + size))
+		if (!ft_frwlist_push_front(res->a, (void *)(int64_t)data[size]))
 			return (new_criterr(res));
 	return (res);
 }

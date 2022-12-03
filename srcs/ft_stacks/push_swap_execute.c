@@ -23,9 +23,9 @@ void	ft_stacks_execute(t_stacks *this, t_instruction ins)
 }
 
 void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,
-								int count)
+								int64_t count)
 {
-	int	idx;
+	int64_t	idx;
 
 	if (ins == Ins_Invalid)
 		return ;

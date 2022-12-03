@@ -14,8 +14,8 @@
 
 int	ft_is_roughly_sorted(t_stacks *stacks)
 {
-	int					lowest;
-	int					idx;
+	int64_t				lowest;
+	int64_t				idx;
 	t_ftfrwlist_node	*node;
 
 	if (stacks->a->size < 3)
@@ -31,12 +31,12 @@ int	ft_is_roughly_sorted(t_stacks *stacks)
 			idx++;
 			continue ;
 		}
-		if (*(int *)node->value > *(int *)node->next->value)
+		if ((int64_t)node->value > (int64_t)node->next->value)
 			return (0);
 		node = node->next;
 		idx++;
 	}
 	if (lowest == 0)
 		return (1);
-	return (*(int *)node->value < *(int *)stacks->a->first->value);
+	return ((int64_t)node->value < (int64_t)stacks->a->first->value);
 }

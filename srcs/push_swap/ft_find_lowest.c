@@ -12,22 +12,22 @@
 
 #include "push_swap.h"
 
-int	ft_find_lowest(t_ftfrwlist *stack)
+int64_t	ft_find_lowest(t_ftfrwlist *stack)
 {
 	t_ftfrwlist_node	*node;
-	int					min_val;
-	int					min_idx;
-	int					idx;
-	int					value;
+	int64_t				min_val;
+	int64_t				min_idx;
+	int64_t				idx;
+	int64_t				value;
 
 	node = stack->first;
-	min_val = *(int *)node->value;
+	min_val = (int64_t)node->value;
 	min_idx = 0;
 	idx = 1;
 	node = node->next;
 	while (node)
 	{
-		value = *(int *)node->value;
+		value = (int64_t)node->value;
 		if (value < min_val)
 		{
 			min_val = value;
@@ -39,22 +39,22 @@ int	ft_find_lowest(t_ftfrwlist *stack)
 	return (min_idx);
 }
 
-int	ft_find_biggest(t_ftfrwlist *stack)
+int64_t	ft_find_biggest(t_ftfrwlist *stack)
 {
 	t_ftfrwlist_node	*node;
-	int					max_val;
-	int					max_idx;
-	int					idx;
-	int					value;
+	int64_t				max_val;
+	int64_t				max_idx;
+	int64_t				idx;
+	int64_t				value;
 
 	node = stack->first;
-	max_val = *(int *)node->value;
+	max_val = (int64_t)node->value;
 	max_idx = 0;
 	idx = 1;
 	node = node->next;
 	while (node)
 	{
-		value = *(int *)node->value;
+		value = (int64_t)node->value;
 		if (value > max_val)
 		{
 			max_val = value;

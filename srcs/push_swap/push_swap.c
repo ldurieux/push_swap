@@ -15,10 +15,8 @@
 static int	data_new(t_push_swap_data *data, int *numbers, int count)
 {
 	data->stacks = ft_stacks_new(numbers, count);
-	data->buf = malloc(sizeof(int) * count);
-	if (!data->stacks)
-		return (0);
-	return (1);
+	data->buf = malloc(sizeof(int64_t) * count);
+	return (data->stacks != NULL);
 }
 
 static void	data_delete(t_push_swap_data *data)

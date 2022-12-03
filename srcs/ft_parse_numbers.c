@@ -14,12 +14,12 @@
 
 #define DEFAULT_VEC_SIZE 512
 
-void	free_strarr(char **arr)
+void	free_strarr(char **arr, size_t count)
 {
 	size_t	idx;
 
 	idx = (size_t)-1;
-	while (arr[++idx])
+	while (++idx < count)
 		free(arr[idx]);
 	free(arr);
 }
@@ -94,16 +94,16 @@ int	*ft_parse_numbers(char **args, size_t *count)
 	res = malloc(sizeof(int) * *count);
 	if (!res)
 	{
-		free_strarr(numbers_str);
+		free_strarr(numbers_str, *count);
 		return (0);
 	}
 	if (!strs_to_int(numbers_str, res, *count))
 	{
-		free_strarr(numbers_str);
+		free_strarr(numbers_str, *count);
 		free(res);
 		return (NULL);
 	}
-	free_strarr(numbers_str);
+	free_strarr(numbers_str, *count);
 	if (!ft_normalize_numbers(&res, *count))
 	{
 		free(res);

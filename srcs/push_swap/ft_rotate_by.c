@@ -12,15 +12,15 @@
 
 #include "push_swap.h"
 
-void	ft_rotate_common(t_stacks *stacks, int *rot_a, int *rot_b)
+void	ft_rotate_common(t_stacks *stacks, int64_t *rot_a, int64_t *rot_b)
 {
-	int	mid_a;
-	int	mid_b;
-	int	min;
+	int64_t	mid_a;
+	int64_t	mid_b;
+	int64_t	min;
 
-	mid_a = (int)stacks->a->size / 2;
-	mid_b = (int)stacks->b->size / 2;
-	min = (int)ft_min(*rot_a, *rot_b);
+	mid_a = (int64_t)stacks->a->size / 2;
+	mid_b = (int64_t)stacks->b->size / 2;
+	min = (int64_t)ft_min(*rot_a, *rot_b);
 	if (*rot_a <= mid_a && (*rot_b <= mid_b || *rot_a == *rot_b))
 	{
 		ft_stacks_execute_multiple(stacks, Ins_Rotate_Both, min);
@@ -29,7 +29,7 @@ void	ft_rotate_common(t_stacks *stacks, int *rot_a, int *rot_b)
 	}
 }
 
-void	ft_rotate_by(t_stacks *stacks, int which, int count)
+void	ft_rotate_by(t_stacks *stacks, int which, size_t count)
 {
 	t_ftfrwlist		*stack;
 	t_instruction	ins;
@@ -41,7 +41,7 @@ void	ft_rotate_by(t_stacks *stacks, int which, int count)
 		ins = Ins_Rotate_B;
 		stack = stacks->b;
 	}
-	if ((size_t)count > stack->size / 2)
+	if (count > stack->size / 2)
 	{
 		if (ins == Ins_Rotate_A)
 			ins = Ins_Reverse_Rotate_A;
@@ -49,5 +49,5 @@ void	ft_rotate_by(t_stacks *stacks, int which, int count)
 			ins = Ins_Reverse_Rotate_B;
 		count = ((int)stack->size) - count;
 	}
-	ft_stacks_execute_multiple(stacks, ins, count);
+	ft_stacks_execute_multiple(stacks, ins, (int64_t)count);
 }
