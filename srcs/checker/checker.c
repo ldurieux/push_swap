@@ -29,7 +29,6 @@ int	checker(t_checker_flags flags, t_stacks *stacks, int *numbers)
 	ins = NULL;
 	if (!ft_get_instructions(STDIN_FILENO, &ins, &ins_count))
 		return (error(numbers, stacks, ins, 2));
-	ft_stacks_print(stacks, flags);
 	ft_stacks_execute(stacks, ins, ins_count, flags);
 	free(ins);
 	return (0);

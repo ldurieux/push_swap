@@ -18,6 +18,7 @@ SRCS 		= \
 			  srcs/ft_parse_numbers.c \
 			  srcs/ft_sort_merge.c \
 			  srcs/ft_put_instruction_fd.c \
+			  srcs/ft_normalize_numbers.c \
 			  
 CHECKERSRCS	= \
 			  checker_main.c \
@@ -38,6 +39,7 @@ PUSHSWAPSRCS	= \
 			  srcs/push_swap/ft_rotate_by.c \
 			  srcs/push_swap/ft_find_lowest.c \
 			  srcs/push_swap/ft_rotate_sort.c \
+			  srcs/push_swap/prepare_stacks.c \
 			  srcs/push_swap/ft_is_roughly_sorted.c \
 
 ASMSRCS		= \
@@ -63,7 +65,7 @@ CHECKERDEPS		= ${CHECKERSRCS:%.c=$(BUILDDIR)/%.d}
 PUSHSWAPDEPS	= ${PUSHSWAPSRCS:%.c=$(BUILDDIR)/%.d}
 PUSHSWAPOBJS	= ${PUSHSWAPSRCS:%.c=$(BUILDDIR)/%.o}
 CC			= cc
-CCWFLGS		= -Wall -Wextra -Werror
+CCWFLGS		= -Wall -Wextra -Werror -g
 CCDBGFLGS	= -fsanitize=address -g
 CCO1FLGS	= -O1 -march=native
 CCO2FLGS	= -O2 -march=native

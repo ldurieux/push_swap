@@ -18,6 +18,8 @@ int	ft_is_roughly_sorted(t_stacks *stacks)
 	int					idx;
 	t_ftfrwlist_node	*node;
 
+	if (stacks->a->size < 3)
+		return (1);
 	lowest = ft_find_lowest(stacks->a);
 	idx = 0;
 	node = stacks->a->first;

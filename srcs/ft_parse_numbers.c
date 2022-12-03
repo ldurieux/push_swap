@@ -12,90 +12,102 @@
 
 #include "common.h"
 
-#define INT32_MAX_STR "2147483647"
-#define INT32_MIN_STR "-2147483648"
+#define DEFAULT_VEC_SIZE 512
 
-static int	parse_number(int *dest, char *number)
+void	free_strarr(char **arr)
 {
-	if (!dest || !number)
-		return (0);
-	if (number[0] != '-' && !ft_isdigit(number[0]))
-		return (0);
-	if (number[0] == '-' && !ft_isdigit(number[1]))
-		return (0);
-	if (!ft_str_isdigit(number + 1))
-		return (0);
-	*dest = ft_strtoi(number, NULL);
-	if ((*dest == INT32_MAX && ft_strcmp(number, INT32_MAX_STR))
-		|| (*dest == INT32_MIN && ft_strcmp(number, INT32_MIN_STR)))
-		return (0);
-	return (1);
-}
-
-static int	check_dup(int *values, size_t len)
-{
-	int		*cpy;
 	size_t	idx;
 
-	cpy = malloc(sizeof(int) * len);
-	if (!cpy)
-		return (0);
-	ft_memcpy(cpy, values, sizeof(int) * len);
-	if (!ft_sort_merge(cpy, len))
-		return (free(cpy), 0);
-	idx = 0;
-	while (++idx < len)
-		if (cpy[idx - 1] == cpy[idx])
-			return (free(cpy), 0);
-	free(cpy);
-	return (1);
-}
-
-static void	free_strarr(char **arr)
-{
-	size_t	i;
-
-	if (!arr)
-		return ;
-	i = (size_t)-1;
-	while (arr[++i])
-		free(arr[i]);
+	idx = (size_t)-1;
+	while (arr[++idx])
+		free(arr[idx]);
 	free(arr);
 }
 
-static int	*parse_numbers_criterr(int *res, char **numbers, char **argv)
+static char	**split_args(char **args, size_t *count)
 {
-	free(res);
-	if (numbers != argv)
-		free_strarr(numbers);
-	return (NULL);
+	t_ftvector	*vec;
+	const char	*str;
+	char		*tok;
+	char		**res;
+	size_t		idx;
+
+	vec = ft_vector_new(sizeof(char *), DEFAULT_VEC_SIZE);
+	if (!vec)
+		return (NULL);
+	idx = 0;
+	str = *args;
+	while (str)
+	{
+		tok = ft_strtok_r(str, " \r\f\n\t\v", &str);
+		if (!tok)
+			return (ft_vector_delete(vec), NULL);
+		if (!ft_vector_push_back(vec, &tok))
+			return (ft_vector_delete(vec), NULL);
+		if (!*str)
+			str = args[++idx];
+	}
+	res = vec->data;
+	*count = vec->size;
+	free(vec);
+	return (res);
 }
 
-int	*ft_parse_numbers(char **argv, size_t *len)
-{
-	int		*res;
-	size_t	idx;
-	char	**numbers;
+#define INT_MAX_STR "2147483647"
+#define INT_MIN_STR "-2147483648"
 
-	numbers = argv;
-	if (!argv[1])
-		numbers = ft_strsplit(argv[0], " \n\r\f\t\v");
-	if (!numbers)
-		return (parse_numbers_criterr(NULL, NULL, NULL));
-	while (numbers[++(*len)])
-		;
-	if (*len == 0)
-		return (parse_numbers_criterr(NULL, numbers, argv));
-	res = malloc(sizeof(int) * *len);
+static int	str_to_int(char *str, int *num)
+{
+	char	*end;
+
+	*num = ft_strtoi(str, &end);
+	if (*end
+		|| (*num == INT_MIN && (ft_strcmp(str, INT_MIN_STR) != 0))
+		|| (*num == INT_MAX && (ft_strcmp(str, INT_MAX_STR) != 0)))
+		return (0);
+	return (1);
+}
+
+static int	strs_to_int(char **strs, int *nums, size_t count)
+{
+	int	*end;
+
+	end = nums + count;
+	while (nums != end)
+	{
+		if (!str_to_int(*strs, nums))
+			return (0);
+		strs++;
+		nums++;
+	}
+	return (1);
+}
+
+int	*ft_parse_numbers(char **args, size_t *count)
+{
+	char	**numbers_str;
+	int		*res;
+
+	numbers_str = split_args(args, count);
+	if (!numbers_str)
+		return (0);
+	res = malloc(sizeof(int) * *count);
 	if (!res)
-		return (parse_numbers_criterr(NULL, numbers, argv));
-	idx = (size_t)-1;
-	while (++idx < *len)
-		if (!parse_number(res + idx, numbers[idx]))
-			return (parse_numbers_criterr(res, numbers, argv));
-	if (!check_dup(res, *len))
-		return (parse_numbers_criterr(res, numbers, argv));
-	if (numbers != argv)
-		free_strarr(numbers);
+	{
+		free_strarr(numbers_str);
+		return (0);
+	}
+	if (!strs_to_int(numbers_str, res, *count))
+	{
+		free_strarr(numbers_str);
+		free(res);
+		return (NULL);
+	}
+	free_strarr(numbers_str);
+	if (!ft_normalize_numbers(&res, *count))
+	{
+		free(res);
+		return (NULL);
+	}
 	return (res);
 }

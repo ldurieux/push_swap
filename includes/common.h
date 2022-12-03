@@ -13,6 +13,7 @@
 #ifndef COMMON_H
 # define COMMON_H
 
+# include <limits.h>
 # include "libft.h"
 # include "ft_vector.h"
 
@@ -37,6 +38,8 @@ typedef enum e_instruction
  * if a malloc error occured return NULL
  * if a number is malformed return NULL */
 int		*ft_parse_numbers(char **argv, size_t *len);
+
+int		ft_normalize_numbers(int **nums, size_t count);
 
 /* sort len values in data using the merge algorithm
  * if a malloc error occured return null */

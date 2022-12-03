@@ -33,6 +33,8 @@ static int	find_dest(t_ftfrwlist *stack, int value)
 	int					highest;
 
 	node = stack->first;
+	if (!node)
+		return (0);
 	idx = 0;
 	lowest = 1;
 	highest = 1;
@@ -54,6 +56,7 @@ static int	find_dest(t_ftfrwlist *stack, int value)
 static void	get_insert_cost(t_push_swap_data *data)
 {
 	int					idx;
+	int					tmp;
 	int					value;
 	t_ftfrwlist_node	*node;
 
@@ -61,8 +64,9 @@ static void	get_insert_cost(t_push_swap_data *data)
 	idx = 0;
 	while (node)
 	{
+		tmp = (idx + 1) / 2 + !(idx % 2);
 		value = *(int *)node->value;
-		data->buf[idx] = idx + find_dest(data->stacks->a, value);
+		data->buf[idx] = tmp + find_dest(data->stacks->a, value);
 		node = node->next;
 		idx++;
 	}

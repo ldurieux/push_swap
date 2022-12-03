@@ -25,6 +25,8 @@ typedef struct s_push_swap_data
 
 int		push_swap(int *numbers, int count);
 
+void	prepare_stacks(t_stacks *stacks);
+
 int		ft_is_sorted(const int *numbers, int count);
 /* return true if stack a is sorted but the
  * rotation does not matter */
@@ -43,7 +45,7 @@ void	ft_rotate_common(t_stacks *stacks, int *rot_a, int *rot_b);
  * rotate, correct way or reverse*/
 void	ft_rotate_by(t_stacks *stacks, int which, int count);
 /* rotate the stack a until it is in the correct rotation
- * this function expected the stack to at least
+ * this function expect the stack to at least
  * be sorted but in the wrong rotation */
 void	ft_rotate_sort(t_stacks *stacks);
 
