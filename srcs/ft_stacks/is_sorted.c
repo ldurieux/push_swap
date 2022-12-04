@@ -16,7 +16,7 @@ int	ft_stacks_is_sorted(t_stacks *this)
 {
 	int64_t				last;
 	int64_t				value;
-	t_ftfrwlist_node	*node;
+	t_ftlist_node	*node;
 
 	if (this->b->size > 0)
 		return (0);

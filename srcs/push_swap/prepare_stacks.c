@@ -13,48 +13,40 @@
 #include "ft_stacks.h"
 #include "push_swap.h"
 
-static int	send_biggest_back(t_stacks *stacks, t_ftfrwlist_node *curr,
-							t_ftfrwlist_node **last,
-							t_ftfrwlist_node **before_last)
+static int	send_highest_back(t_stacks *stacks, t_ftlist_node *curr,
+							t_ftlist_node *last)
 {
-	if (((int64_t)curr->value - (int64_t)(*last)->value) > 0
-		&& ((int64_t)curr->value - (int64_t)(*last)->value) < 13)
+	int64_t	before_last_val;
+	int64_t	curr_val;
+
+	curr_val = (int64_t)curr->value;
+	if ((curr_val - (int64_t)last->value) > 0
+		&& (curr_val - (int64_t)last->value) < 13)
 	{
-		ft_stacks_execute(stacks, Ins_Rotate_A);
-		*before_last = *last;
-		*last = stacks->a->last;
+		ft_stacks_execute(stacks, Ins_Rotate_A, 1);
 		return (1);
 	}
-	if (*before_last
-		&& ((int64_t)curr->value - (int64_t)(*before_last)->value) > 0
-		&& ((int64_t)curr->value - (int64_t)(*before_last)->value) < 13)
+	before_last_val = (int64_t)last->prev->value;
+	if (before_last_val < (int64_t)last->value
+		&& (curr_val - before_last_val) > 0
+		&& (curr_val - before_last_val) < 13)
 	{
-		ft_stacks_execute(stacks, Ins_Reverse_Rotate_A);
-		ft_stacks_execute(stacks, Ins_Swap_A);
-		ft_stacks_execute(stacks, Ins_Rotate_A);
-		*before_last = stacks->a->last;
-		ft_stacks_execute(stacks, Ins_Rotate_A);
+		ft_stacks_execute(stacks, Ins_Reverse_Rotate_A, 1);
+		ft_stacks_execute(stacks, Ins_Swap_A, 1);
+		ft_stacks_execute_multiple(stacks, Ins_Rotate_A, 2, 1);
 		return (1);
 	}
-	ft_stacks_execute(stacks, Ins_Push_B);
+	ft_stacks_execute(stacks, Ins_Push_B, 1);
 	return (1);
 }
 
 void	prepare_stacks(t_stacks *stacks)
 {
-	t_ftfrwlist_node	*last;
-	t_ftfrwlist_node	*before_last;
-
 	if (stacks->a->size <= 3)
 		return ;
-	last = stacks->a->last;
-	while ((int64_t)last->value > (int64_t)stacks->a->size / 2)
-	{
-		ft_stacks_execute(stacks, Ins_Reverse_Rotate_A);
-		last = stacks->a->last;
-	}
-	before_last = NULL;
-	while (!ft_is_roughly_sorted(stacks))
-		if (!send_biggest_back(stacks, stacks->a->first, &last, &before_last))
+	while ((int64_t)stacks->a->last->value > (int64_t)stacks->a->size / 2)
+		ft_stacks_execute(stacks, Ins_Reverse_Rotate_A, 1);
+	while (!ft_is_roughly_sorted(stacks->a->first))
+		if (!send_highest_back(stacks, stacks->a->first, stacks->a->last))
 			break ;
 }

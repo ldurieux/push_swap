@@ -12,9 +12,9 @@
 
 #include "ft_stacks.h"
 
-static void	push_list(t_ftfrwlist *from, t_ftfrwlist *to)
+static void	push_list(t_ftlist *from, t_ftlist *to)
 {
-	t_ftfrwlist_node	*node;
+	t_ftlist_node	*node;
 
 	node = from->first;
 	if (!node)
@@ -22,8 +22,12 @@ static void	push_list(t_ftfrwlist *from, t_ftfrwlist *to)
 	from->first = node->next;
 	if (!from->first)
 		from->last = NULL;
+	else
+		from->first->prev = NULL;
 	from->size--;
 	node->next = to->first;
+	if (to->first)
+		to->first->prev = node;
 	to->first = node;
 	if (!to->last)
 		to->last = node;

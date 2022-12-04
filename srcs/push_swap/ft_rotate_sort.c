@@ -14,5 +14,5 @@
 
 void	ft_rotate_sort(t_stacks *stacks)
 {
-	ft_rotate_by(stacks, 0, ft_find_lowest(stacks->a));
+	ft_rotate_by(stacks, 0, ft_find_lowest_idx(stacks->a));
 }

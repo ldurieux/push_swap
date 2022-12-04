@@ -14,7 +14,7 @@
 # define FT_STACKS_H
 
 # include "libft.h"
-# include "ft_frwlist.h"
+# include "ft_list.h"
 # include "common.h"
 
 struct							s_stacks;
@@ -25,8 +25,8 @@ typedef union u_checker_flags	t_checker_flags;
 
 typedef struct s_stacks
 {
-	t_ftfrwlist		*a;
-	t_ftfrwlist		*b;
+	t_ftlist		*a;
+	t_ftlist		*b;
 	t_stacks_func	*funcs;
 }	t_stacks;
 

@@ -15,25 +15,25 @@
 void	ft_put_instruction_fd(t_instruction ins, int fd)
 {
 	if (ins == Ins_Swap_A)
-		ft_putstr_fd("sa", fd);
+		ft_putendl_fd("sa", fd);
 	else if (ins == Ins_Swap_B)
-		ft_putstr_fd("sb", fd);
+		ft_putendl_fd("sb", fd);
 	else if (ins == Ins_Swap_Both)
-		ft_putstr_fd("ss", fd);
+		ft_putendl_fd("ss", fd);
 	else if (ins == Ins_Push_A)
-		ft_putstr_fd("pa", fd);
+		ft_putendl_fd("pa", fd);
 	else if (ins == Ins_Push_B)
-		ft_putstr_fd("pb", fd);
+		ft_putendl_fd("pb", fd);
 	else if (ins == Ins_Rotate_A)
-		ft_putstr_fd("ra", fd);
+		ft_putendl_fd("ra", fd);
 	else if (ins == Ins_Rotate_B)
-		ft_putstr_fd("rb", fd);
+		ft_putendl_fd("rb", fd);
 	else if (ins == Ins_Rotate_Both)
-		ft_putstr_fd("rr", fd);
+		ft_putendl_fd("rr", fd);
 	else if (ins == Ins_Reverse_Rotate_A)
-		ft_putstr_fd("rra", fd);
+		ft_putendl_fd("rra", fd);
 	else if (ins == Ins_Reverse_Rotate_B)
-		ft_putstr_fd("rrb", fd);
+		ft_putendl_fd("rrb", fd);
 	else if (ins == Ins_Reverse_Rotate_Both)
-		ft_putstr_fd("rrr", fd);
+		ft_putendl_fd("rrr", fd);
 }

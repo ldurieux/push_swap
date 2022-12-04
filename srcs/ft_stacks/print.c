@@ -19,11 +19,11 @@ static void	print_item(void *value)
 	ft_putnbr_fd(*(int *)value, STDOUT_FILENO);
 }
 
-static void	print_color(t_ftfrwlist *list)
+static void	print_color(t_ftlist *list)
 {
 	int					last_value;
 	int					value;
-	t_ftfrwlist_node	*node;
+	t_ftlist_node	*node;
 
 	node = list->first;
 	if (!node)
@@ -59,9 +59,9 @@ void	ft_stacks_print(t_stacks *this, t_checker_flags flags)
 	}
 	else
 	{
-		ft_frwlist_iter(this->a, print_item);
+		ft_list_iter(this->a, print_item);
 		ft_putstr_fd("\nb |", STDOUT_FILENO);
-		ft_frwlist_iter(this->b, print_item);
+		ft_list_iter(this->b, print_item);
 	}
 	ft_putendl_fd("", STDOUT_FILENO);
 }

@@ -39,11 +39,11 @@ int	push_swap(int *numbers, int count)
 		return (0);
 	if (!data_new(&data, numbers, count))
 		return (push_swap_criterr(&data, 3));
-	if (!ft_is_roughly_sorted(data.stacks))
+	if (!ft_is_roughly_sorted(data.stacks->a->first))
 	{
 		prepare_stacks(data.stacks);
-		if (!ft_is_roughly_sorted(data.stacks))
-			ft_stacks_execute(data.stacks, Ins_Swap_A);
+		if (!ft_is_roughly_sorted(data.stacks->a->first))
+			ft_stacks_execute(data.stacks, Ins_Swap_A, 1);
 		while (data.stacks->b->size)
 			ft_insert_next(&data);
 		ft_rotate_sort(data.stacks);

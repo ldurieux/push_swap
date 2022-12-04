@@ -30,7 +30,7 @@ void	prepare_stacks(t_stacks *stacks);
 int		ft_is_sorted(const int *numbers, int count);
 /* return true if stack a is sorted but the
  * rotation does not matter */
-int		ft_is_roughly_sorted(t_stacks *stacks);
+int		ft_is_roughly_sorted(t_ftlist_node *node);
 
 /* insert one value from stack b to
  * stack a in the correct position */
@@ -49,13 +49,13 @@ void	ft_rotate_by(t_stacks *stacks, int which, size_t count);
  * be sorted but in the wrong rotation */
 void	ft_rotate_sort(t_stacks *stacks);
 
-int64_t ft_find_lowest(t_ftfrwlist *stack);
-int64_t	ft_find_biggest(t_ftfrwlist *stack);
+int64_t ft_find_lowest_idx(t_ftlist *stack);
+int64_t	ft_find_biggest_idx(t_ftlist *stack);
 
 /* in adition to executing the instruction,
  * these functions print it to STDOUT_FILENO */
-void	ft_stacks_execute(t_stacks *this, t_instruction ins);
+void	ft_stacks_execute(t_stacks *this, t_instruction ins, int print);
 void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,
-			int64_t count);
+			int64_t count, int print);
 
 #endif // PUSH_SWAP_H

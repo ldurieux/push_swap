@@ -12,17 +12,19 @@
 
 #include "ft_stacks.h"
 
-static void	rotate_list(t_ftfrwlist *list)
+static void	rotate_list(t_ftlist *list)
 {
-	t_ftfrwlist_node	*node;
+	t_ftlist_node	*node;
 
 	if (list->size <= 1)
 		return ;
 	node = list->first;
 	list->last->next = node;
+	node->prev = list->last;
 	list->first = node->next;
 	list->last = node;
 	node->next = NULL;
+	list->first->prev = NULL;
 }
 
 void	ft_stacks_ra(t_stacks *this)

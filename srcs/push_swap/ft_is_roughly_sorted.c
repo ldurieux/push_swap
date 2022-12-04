@@ -12,17 +12,37 @@
 
 #include "push_swap.h"
 
-int	ft_is_roughly_sorted(t_stacks *stacks)
+static int64_t	lowest_idx(t_ftlist_node *node)
 {
-	int64_t				lowest;
-	int64_t				idx;
-	t_ftfrwlist_node	*node;
+	int64_t	lowest;
+	int64_t	lowest_idx;
+	int64_t	idx;
 
-	if (stacks->a->size < 3)
-		return (1);
-	lowest = ft_find_lowest(stacks->a);
 	idx = 0;
-	node = stacks->a->first;
+	lowest_idx = 0;
+	lowest = (int64_t)node->value;
+	while (node->next)
+	{
+		idx++;
+		node = node->next;
+		if ((int64_t)node->value < lowest)
+		{
+			lowest = (int64_t)node->value;
+			lowest_idx = idx;
+		}
+	}
+	return (lowest_idx);
+}
+
+int	ft_is_roughly_sorted(t_ftlist_node *node)
+{
+	int64_t	first_value;
+	int64_t	lowest;
+	int64_t	idx;
+
+	first_value = (int64_t)node->value;
+	lowest = lowest_idx(node);
+	idx = 0;
 	while (node->next)
 	{
 		if (idx == lowest - 1)
@@ -31,12 +51,12 @@ int	ft_is_roughly_sorted(t_stacks *stacks)
 			idx++;
 			continue ;
 		}
-		if ((int64_t)node->value > (int64_t)node->next->value)
+		if (node->value > node->next->value)
 			return (0);
 		node = node->next;
 		idx++;
 	}
 	if (lowest == 0)
 		return (1);
-	return ((int64_t)node->value < (int64_t)stacks->a->first->value);
+	return ((int64_t)node->value < first_value);
 }

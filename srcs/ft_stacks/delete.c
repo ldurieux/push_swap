@@ -16,8 +16,8 @@ void	ft_stacks_delete(t_stacks *this)
 {
 	if (!this)
 		return ;
-	ft_frwlist_delete(this->a);
-	ft_frwlist_delete(this->b);
+	ft_list_delete(this->a);
+	ft_list_delete(this->b);
 	free(this->funcs);
 	free(this);
 }

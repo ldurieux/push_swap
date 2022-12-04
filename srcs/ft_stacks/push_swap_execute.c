@@ -13,17 +13,17 @@
 #include "ft_stacks.h"
 #include "push_swap.h"
 
-void	ft_stacks_execute(t_stacks *this, t_instruction ins)
+void	ft_stacks_execute(t_stacks *this, t_instruction ins, int print)
 {
 	if (ins == Ins_Invalid)
 		return ;
 	this->funcs[ins](this);
-	ft_put_instruction_fd(ins, STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
+	if (print)
+		ft_put_instruction_fd(ins, STDOUT_FILENO);
 }
 
 void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,
-								int64_t count)
+								int64_t count, int print)
 {
 	int64_t	idx;
 
@@ -33,7 +33,7 @@ void	ft_stacks_execute_multiple(t_stacks *this, t_instruction ins,
 	while (++idx < count)
 	{
 		this->funcs[ins](this);
-		ft_put_instruction_fd(ins, STDOUT_FILENO);
-		ft_putendl_fd("", STDOUT_FILENO);
+		if (print)
+			ft_put_instruction_fd(ins, STDOUT_FILENO);
 	}
 }

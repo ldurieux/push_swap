@@ -65,7 +65,7 @@ CHECKERDEPS		= ${CHECKERSRCS:%.c=$(BUILDDIR)/%.d}
 PUSHSWAPDEPS	= ${PUSHSWAPSRCS:%.c=$(BUILDDIR)/%.d}
 PUSHSWAPOBJS	= ${PUSHSWAPSRCS:%.c=$(BUILDDIR)/%.o}
 CC			= cc
-CCWFLGS		= -Wall -Wextra -Werror #-fsanitize=address -g
+CCWFLGS		= -Wall -Wextra -Werror -O2 #-fsanitize=address -g
 CCDBGFLGS	= -fsanitize=address -g
 CCO1FLGS	= -O1 -march=native
 CCO2FLGS	= -O2 -march=native

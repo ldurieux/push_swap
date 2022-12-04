@@ -40,8 +40,8 @@ t_stacks	*new_criterr(t_stacks *res)
 {
 	if (res)
 	{
-		ft_frwlist_delete(res->a);
-		ft_frwlist_delete(res->b);
+		ft_list_delete(res->a);
+		ft_list_delete(res->b);
 		free(res->funcs);
 	}
 	free(res);
@@ -55,13 +55,13 @@ t_stacks	*ft_stacks_new(int *data, size_t size)
 	res = malloc(sizeof(t_stacks));
 	if (!res)
 		return (NULL);
-	res->a = ft_frwlist_new();
-	res->b = ft_frwlist_new();
+	res->a = ft_list_new();
+	res->b = ft_list_new();
 	res->funcs = make_funcs();
 	if (!res->a || !res->b || !res->funcs)
 		return (new_criterr(res));
 	while (size-- > 0)
-		if (!ft_frwlist_push_front(res->a, (void *)(int64_t)data[size]))
+		if (!ft_list_push_front(res->a, (void *)(int64_t)data[size]))
 			return (new_criterr(res));
 	return (res);
 }

@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-int64_t	ft_find_lowest(t_ftfrwlist *stack)
+int64_t	ft_find_lowest_idx(t_ftlist *stack)
 {
-	t_ftfrwlist_node	*node;
-	int64_t				min_val;
-	int64_t				min_idx;
-	int64_t				idx;
-	int64_t				value;
+	t_ftlist_node	*node;
+	int64_t			min_val;
+	int64_t			min_idx;
+	int64_t			idx;
+	int64_t			value;
 
 	node = stack->first;
 	min_val = (int64_t)node->value;
@@ -39,13 +39,13 @@ int64_t	ft_find_lowest(t_ftfrwlist *stack)
 	return (min_idx);
 }
 
-int64_t	ft_find_biggest(t_ftfrwlist *stack)
+int64_t	ft_find_biggest_idx(t_ftlist *stack)
 {
-	t_ftfrwlist_node	*node;
-	int64_t				max_val;
-	int64_t				max_idx;
-	int64_t				idx;
-	int64_t				value;
+	t_ftlist_node	*node;
+	int64_t			max_val;
+	int64_t			max_idx;
+	int64_t			idx;
+	int64_t			value;
 
 	node = stack->first;
 	max_val = (int64_t)node->value;

@@ -12,19 +12,22 @@
 
 #include "ft_stacks.h"
 
-static void	reverse_rotate_list(t_ftfrwlist *list)
+
+static void	reverse_rotate_list(t_ftlist *list)
 {
-	t_ftfrwlist_node	*node;
-	t_ftfrwlist_node	*prev;
+	t_ftlist_node	*node;
+	t_ftlist_node	*prev;
 
 	if (list->size <= 1)
 		return ;
 	node = list->last;
-	prev = ft_frwlist_node_at(list, list->size - 2);
-	list->last = prev;
-	prev->next = NULL;
 	node->next = list->first;
+	list->first->prev = node;
+	prev = node->prev;
+	prev->next = NULL;
+	node->prev = NULL;
 	list->first = node;
+	list->last = prev;
 }
 
 void	ft_stacks_rra(t_stacks *this)
